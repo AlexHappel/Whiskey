@@ -1,7 +1,8 @@
 {
-  "name": "whiskey",
+  "name": "new-project",
   "private": true,
   "version": "0.0.0",
+  "proxy": "http://localhost:5000",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.7.7",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.6.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2"

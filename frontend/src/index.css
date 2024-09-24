@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: url('/4091b44257d67d113b040469715798ec-2916648734.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  color: #D4AF37;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Black overlay */
+  z-index: -1; /* Keep it behind everything */
+}
