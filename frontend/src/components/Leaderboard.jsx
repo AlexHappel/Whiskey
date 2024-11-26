@@ -9,7 +9,7 @@ const Leaderboard = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const apiUrl = import.meta.env.VITE_API_URL; // Use environment variable for API URL
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   // Fetch leaderboard data on component mount
   useEffect(() => {
@@ -53,7 +53,7 @@ const Leaderboard = () => {
     axios.post(`${apiUrl}/leaderboard`, newPlayer)
       .then(response => {
         setSuccessMessage('Player score submitted successfully!');
-        setTimeout(() => setSuccessMessage(''), 3000); // Clear success message after 3 seconds
+        setTimeout(() => setSuccessMessage(''), 3000);
 
         // Update the leaderboard with the latest data from the backend
         axios.get(`${apiUrl}/leaderboard`)
@@ -84,12 +84,10 @@ const Leaderboard = () => {
       <div className="w-full max-w-4xl text-center p-6 mx-auto flex flex-col justify-center items-center font-elegant">
         <h2 className="text-4xl font-bold text-gold mb-6">Warhammer 40K Leaderboard</h2>
 
-    {/* Success and error messages */}
     {loading && <div>Loading...</div>}
     {error && <div className="text-bloodRed">{error}</div>}
     {successMessage && <div className="text-green-500">{successMessage}</div>}
 
-    {/* Form for score submission */}
     <form
       onSubmit={handleSubmit}
       className="bg-silver rounded-gothic p-6 mb-6 w-full max-w-md mx-auto"
@@ -134,7 +132,6 @@ const Leaderboard = () => {
       </button>
     </form>
 
-    {/* Centered Leaderboard Table */}
     <div className="w-full max-w-3xl overflow-x-auto">
       <table className="w-full bg-black rounded-gothic mx-auto">
         <thead>

@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Player = require('../models/Player');
 
-// GET /api/leaderboard - Fetch leaderboard data, sorted by adjusted_score (ascending)
+// GET /api/leaderboard - Fetch leaderboard data, sorted by adjusted_score
 router.get('/leaderboard', async (req, res) => {
   try {
     // Sort players by adjusted_score in ascending order (lowest adjusted score at the top)
-    const players = await Player.find().sort({ adjusted_score: 1 }); // Sort in ascending order
-    res.json(players); // Send back the players array as JSON
+    const players = await Player.find().sort({ adjusted_score: 1 });
+    res.json(players);
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ message: 'Server error' });
@@ -24,15 +24,15 @@ router.post('/leaderboard', async (req, res) => {
 
     if (player) {
       // Player exists, so update their actual score and increment games played
-      player.actual_score += parseFloat(score); // Track their real score
+      player.actual_score += parseFloat(score); 
       player.games_played += 1;
     } else {
       // Create a new player if not found
       player = new Player({
         name,
         actual_score: parseFloat(score),
-        adjusted_score: 0, // Adjusted score starts from 0
-        games_played: 1, // Start with 1 game played
+        adjusted_score: 0, 
+        games_played: 1,
       });
     }
 
@@ -57,7 +57,7 @@ router.post('/leaderboard', async (req, res) => {
       }
 
       console.log(`Recalculated adjusted score for player ${p.name}: ${p.adjusted_score}`);
-      await p.save(); // Save each player with the updated adjusted score
+      await p.save();
       console.log(`Player ${p.name} saved with adjusted score: ${p.adjusted_score}`);
     });
 
